@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function setFontSize() {
+        const base = 16; // 设计稿宽 1080 时的基准
+        const html = document.documentElement;
+        html.style.fontSize = (window.innerWidth / 1080) * base + "px";
+      }
+      setFontSize();
+      window.addEventListener("resize", setFontSize);
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .outer {
+        box-sizing: border-box;
+        background-image: url("https://www.zhainanshijie.com/20251107102936.jpeg");
+        background-size: cover;
+        /* background-position: center; */
+        background-repeat: no-repeat;
+        aspect-ratio: 3/4;
+        padding: 30% 8% 40%;
+        font-size: 3rem;
+      }
+      .content {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="content">
+        <div class="flex flex-col items-center">
+          <!-- 主标题 -->
+          <h1
+            class="text-[8rem] font-900 font-black text-[#331a4d] leading-[1.1]">
+            竞品视频爆了？学会“抄作业”！
+          </h1>
+        </div>
+        <div
+          class="text-[2rem] text-[#331a4d] mb-[1.625rem] absolute bottom-0 left-0 font-[1000]">
+          #竞品爆款深度解构与高效响应策略#
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

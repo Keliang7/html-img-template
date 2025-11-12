@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function setFontSize() {
+        const base = 16;
+        const html = document.documentElement;
+        html.style.fontSize = (window.innerWidth / 1080) * base + "px";
+      }
+      setFontSize();
+      window.addEventListener("resize", setFontSize);
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .outer {
+        box-sizing: border-box;
+        background-image: url("https://www.zhainanshijie.com/20251107102928.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        aspect-ratio: 3/4;
+        padding: 40% 6% 30%;
+        font-size: 3rem;
+      }
+      .content {
+        height: 100%;
+        position: relative;
+      }
+      .b-underline {
+        text-decoration: underline;
+      }
+      .title-bold {
+        text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor,
+          0 0.4px currentColor, 0 -0.4px currentColor, 0.6px 0.6px currentColor,
+          -0.6px -0.6px currentColor;
+        -webkit-text-stroke: 0.6px currentColor;
+        font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue",
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="content">
+        <div class="flex flex-col items-center">
+          <!-- 主标题 absolute -->
+          <div
+            class="absolute top-[-12rem] left-[-2rem] text-[5rem] font-[700] title-bold">
+            抄「钩子」
+          </div>
+
+          <!-- 内容主体 -->
+          <div
+            class="text-[2.25rem] text-[#331a4d] leading-relaxed space-y-[1rem]">
+            <!-- 小标题行 -->
+            <div class="flex items-start gap-[1rem] font-bold">
+              <span class="text-[2rem] mt-[0.25rem]">▶</span>
+              <span class="underline">抄3秒钩子：解构开场留存密码</span>
+            </div>
+
+            <!-- 正文段落 -->
+            <p>
+              <b class="b-underline">爆款</b
+              >视频的前3秒往往采用经过反复验证的注意力抓取模式。所以钩子往往是留住人们最重要的第一步。
+              珀莱雅双抗精华爆款视频采用"<span class="underline font-bold"
+                >肌肤暗沉特写+成分揭秘</span
+              >"开场结构：
+            </p>
+
+            <!-- 列表项 -->
+            <ul class="space-y-[1rem] ml-[2rem]">
+              <li class="flex items-start gap-[1rem]">
+                <span class="text-[2rem] mt-[0.25rem]">◆</span>
+                <span>第1秒展示肤色暗沉对比画面。</span>
+              </li>
+              <li class="flex items-start gap-[1rem]">
+                <span class="text-[2rem] mt-[0.25rem]">◆</span>
+                <span>第2秒弹出"这个成分竟然..."悬念文案。</span>
+              </li>
+              <li class="flex items-start gap-[1rem]">
+                <span class="text-[2rem] mt-[0.25rem]">◆</span>
+                <span>第3秒亮出产品实验室镜头。</span>
+              </li>
+            </ul>
+
+            <!-- 总结段落 -->
+            <p>
+              该结构使视频完播率提升42%。重点借鉴其视觉冲突、悬念设置和产品亮相的三步黄金公式。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 
+<b>{{加粗}}</b>
+<b class="b-underline">{{加粗下划线}}</b>
+-->

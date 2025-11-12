@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function setFontSize() {
+        const base = 16;
+        const html = document.documentElement;
+        html.style.fontSize = (window.innerWidth / 1080) * base + "px";
+      }
+      setFontSize();
+      window.addEventListener("resize", setFontSize);
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .outer {
+        box-sizing: border-box;
+        background-image: url("https://www.zhainanshijie.com/20251110180140.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        aspect-ratio: 3/4;
+        font-size: 3rem;
+      }
+      .content {
+        height: 100%;
+        position: relative;
+      }
+
+      .title {
+        position: relative;
+        font-family: "Alimama ShuHeiTi";
+        background: linear-gradient(
+            340deg,
+            #aebaff 2%,
+            rgba(174, 186, 255, 0) 10%
+          ),
+          linear-gradient(27deg, #aebaff 1%, rgba(174, 186, 255, 0) 9%),
+          linear-gradient(264deg, #3b83ff 2%, #8426ff 95%),
+          linear-gradient(264deg, #072ca6 2%, #11004d 95%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+
+      .title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0.5em; /* 控制与文字的距离 */
+        width: 100%;
+        height: 0.1em; /* 控制线条厚度 */
+        background: linear-gradient(
+          90deg,
+          #aebaff 0%,
+          #3b83ff 40%,
+          #8426ff 80%,
+          #11004d 100%
+        );
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="content">
+        <div class="flex flex-col items-center h-full">
+          <!-- 主标题 absolute -->
+          <div
+            class="title h-[17rem] flex justify-center items-center text-[7rem] font-[900] underline">
+            达人营销有多火？
+          </div>
+
+          <!-- 内容主体 -->
+          <div class="flex-1">
+            <div
+              class="h-full py-[6rem] px-[8rem] flex flex-col justify-between">
+              <!-- 一块内容  -->
+              <div>
+                <div class="flex gap-[1rem] items-center">
+                  <div class="text-[#1D2129] font-[700] relative w-fit">
+                    <div
+                      class="absolute w-full bg-[#E6DBFA] h-[1.5rem] bottom-[0rem] z-0"></div>
+                    <div class="flex">
+                      <span class="relative z-10"
+                        >KOL的立体化合作成为大趋势</span
+                      >
+                    </div>
+                  </div>
+                  <img
+                    src="https://www.zhainanshijie.com/20251111100819.png"
+                    alt=""
+                    class="w-auto h-auto max-h-[3rem] object-contain block" />
+                </div>
+                <div
+                  class="mt-[2rem] text-[#4E5969] leading-[200%] underline underline-offset-[0.3em] decoration-dotted decoration-1">
+                  达人营销已经渗透到各个行业，美妆、汽车、食品饮料等行业尤为突出
+                </div>
+              </div>
+              <!-- 一块内容  -->
+              <!-- 一块内容  -->
+              <div>
+                <div class="flex gap-[1rem] items-center">
+                  <div class="text-[#1D2129] font-[700] relative w-fit">
+                    <div
+                      class="absolute w-full bg-[#E6DBFA] h-[1.5rem] bottom-[0rem] z-0"></div>
+                    <div class="flex">
+                      <span class="relative z-10"
+                        >KOL的立体化合作成为大趋势</span
+                      >
+                    </div>
+                  </div>
+                  <img
+                    src="https://www.zhainanshijie.com/20251111100819.png"
+                    alt=""
+                    class="w-auto h-auto max-h-[3rem] object-contain block" />
+                </div>
+                <div
+                  class="mt-[2rem] text-[#4E5969] leading-[200%] underline underline-offset-[0.3em] decoration-dotted decoration-1">
+                  达人营销已经渗透到各个行业，美妆、汽车、食品饮料等行业尤为突出
+                </div>
+              </div>
+              <!-- 一块内容  -->
+              <!-- 一块内容  -->
+              <div>
+                <div class="flex gap-[1rem] items-center">
+                  <div class="text-[#1D2129] font-[700] relative w-fit">
+                    <div
+                      class="absolute w-full bg-[#E6DBFA] h-[1.5rem] bottom-[0rem] z-0"></div>
+                    <div class="flex">
+                      <span class="relative z-10"
+                        >KOL的立体化合作成为大趋势</span
+                      >
+                    </div>
+                  </div>
+                  <img
+                    src="https://www.zhainanshijie.com/20251111100819.png"
+                    alt=""
+                    class="w-auto h-auto max-h-[3rem] object-contain block" />
+                </div>
+                <div
+                  class="mt-[2rem] text-[#4E5969] leading-[200%] underline underline-offset-[0.3em] decoration-dotted decoration-1">
+                  达人营销已经渗透到各个行业，美妆、汽车、食品饮料等行业尤为突出
+                </div>
+              </div>
+              <!-- 一块内容  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

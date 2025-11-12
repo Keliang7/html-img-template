@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function setFontSize() {
+        const base = 16; // 设计稿宽 1080 时的基准
+        const html = document.documentElement;
+        html.style.fontSize = (window.innerWidth / 1080) * base + "px";
+      }
+      setFontSize();
+      window.addEventListener("resize", setFontSize);
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .outer {
+        box-sizing: border-box;
+        background-image: url("https://www.zhainanshijie.com/20251110180134.jpeg");
+        background-size: cover;
+        /* background-position: center; */
+        background-repeat: no-repeat;
+        aspect-ratio: 3/4;
+        padding: 30% 6% 40%;
+        font-size: 3rem;
+      }
+      .content {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      .text {
+        /* 自动布局子元素 */
+        /* position: static;
+        left: 0px;
+        top: 227.68px;
+        width: 632px;
+        height: 260px;
+        opacity: 1; */
+
+        font-family: Alimama ShuHeiTi;
+        font-size: 7rem;
+        font-weight: bold;
+        line-height: 120%;
+        letter-spacing: 0px;
+
+        font-variation-settings: "opsz" auto;
+        font-feature-settings: "kern" on;
+        background: linear-gradient(
+            352deg,
+            #aebaff 5%,
+            rgba(174, 186, 255, 0) 22%
+          ),
+          linear-gradient(10deg, #aebaff 2%, rgba(174, 186, 255, 0) 22%),
+          linear-gradient(255deg, #3b83ff 3%, #8426ff 94%),
+          linear-gradient(255deg, #072ca6 3%, #11004d 94%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="content">
+        <div class="flex flex-col items-center">
+          <h1 class="text">达人营销有多火？ 告诉你全球视角下的达人营销</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
