@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ai精选快报</title>
+    <script>
+      /**
+       * 响应式字号算法：
+       * - 以 1080 设计宽作为基准，将根字体大小按窗口宽度线性缩放。
+       * - 页内所有采用 rem 的字号会随窗口宽度同比缩放，避免媒体查询。
+       * - 该方法无循环与递归，直接以一次赋值实现响应式。
+       */
+      function setFontSize() {
+        const base = 16; // 1080 设计宽的根字号
+        const html = document.documentElement;
+        html.style.fontSize = (window.innerWidth / 1080) * base + "px";
+      }
+      setFontSize();
+      window.addEventListener("resize", setFontSize);
+    </script>
+    <script>
+      function truncateByChars(el, maxChars, suffix = "....") {
+        if (!el || !Number.isFinite(maxChars) || maxChars <= 0) return;
+        // 读取原始文本并去除首尾空白
+        const raw = (el.textContent || "").trim();
+        if (raw.length <= maxChars) return; // 未超出，无需处理
+
+        // 在追加省略前，移除末尾多余空白与常见标点（中文/英文），避免重复省略
+        // 正则不使用循环，仅一次性替换结尾的标点与空白
+        const sanitized = raw.replace(/[\s.。,…，、;；:：!！?？]+$/u, "");
+
+        // 按字数切片，直接拼接自定义省略符号
+        const truncated = sanitized.slice(0, maxChars) + suffix;
+        el.textContent = truncated;
+      }
+
+      // 初始化：根据 data-max-chars 对标题进行字数截断
+      document.addEventListener("DOMContentLoaded", () => {
+        const el = document.querySelector(".headline-overlay");
+        if (!el) return;
+        const maxAttr = el.getAttribute("data-max-chars");
+        const maxChars = maxAttr ? parseInt(maxAttr, 10) : 34; // 默认 34
+        truncateByChars(el, maxChars, "....");
+      });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://webfonts.oss-cn-beijing.aliyuncs.com" crossorigin>
+    <link rel="stylesheet" href="https://webfonts.oss-cn-beijing.aliyuncs.com/css/puhuiti-2/55.css">
+    <link rel="stylesheet" href="https://webfonts.oss-cn-beijing.aliyuncs.com/css/puhuiti-2/65.css">
+    <link rel="stylesheet" href="https://webfonts.oss-cn-beijing.aliyuncs.com/css/puhuiti-2/85.css">
+
+    <style>
+      /* 全局字体：阿里巴巴普惠体；失败时降级到系统中文无衬线（与 cover.html 对齐） */
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "puhuiti-2", "Alibaba PuHuiTi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        font-weight: 700;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      /* 背景容器：第二张图作为背景模板，按 3:4 比例响应 */
+      .outer {
+        box-sizing: border-box;
+        background-image: url("https://www.zhainanshijie.com/20251110093041.jpeg"); /* 第三张图（背景模板） */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        aspect-ratio: 3/4;
+        /* 依据模板留白，外层内边距用于避免元素覆盖到边框装饰 */
+        padding: 4% 4% 4% 4%;
+      }
+
+      .content {
+        position: relative;
+        height: 100%;
+      }
+
+      /* 标题色（背景已有字样，此类暂不使用，保留以防需要） */
+      .title-display {
+        color: #8a2322;
+        letter-spacing: 0.02em;
+        font-weight: 900;
+      }
+
+      /* 深色栏中的日期与期号区域（靠右上） */
+      .meta {
+        color: #112;
+        /* 标注：34.3px → 34.3/16 ≈ 2.15rem */
+        font-size: 1.60rem;
+      }
+
+      /* 顶部深色栏中的“第1期”白字效果 */
+      .badge {
+        color: #fff;
+        font-weight: 800;
+        /* 标注：99.6px → 99.6/16 ≈ 6.23rem */
+        font-size: 4.23rem;
+        line-height: 1;
+      }
+
+      /* 左侧“头条”竖排文字（覆盖在红色竖条内） */
+      .vertical {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        font-weight: 900;
+        color: #ffffff;
+        letter-spacing: 0.05em;
+      }
+
+      /* 列表区的红点符号 */
+      .dot {
+        color: #b0322c;
+        /* 与 48px 正文字号匹配，稍小更协调 */
+        font-size: 2.8rem;
+        line-height: 1;
+        margin-top: 0.45rem;
+      }
+
+      /* 主体黑条内的大标题文字颜色（接近海报深灰白） */
+      .headline {
+        color: #ecedf1;
+        font-size: 2.6rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      /* 覆盖在背景深色条上的主标题文本（避免重复绘制深色条） */
+      .headline-overlay {
+        position: absolute;
+        /* 位置按原图微调 */
+        top: 18%;
+        left: 13%;
+        right: 7.5%;
+        color: #ecedf1;
+        /* 标注：主标题 80px → 5rem，略收为 4.9rem 贴近换行 */
+        font-size: 4.3rem;
+        font-weight: 800;
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+      }
+
+      /* 资讯列表整体字号：标注 48px → 3rem */
+      .list-block {
+        font-size: 2.5rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="content">
+        <!-- 顶部标题区：背景图已包含“ai精选快报”字样，这里不再叠加文本。
+             仅在右上方填入日期与“第1期”徽标，位置贴合模板的空位。 -->
+        <div class="flex items-start justify-end">
+          <div class="flex flex-col items-end gap-[0.5rem] mt-[0.75rem]">
+            <!-- 日期与星期字号：标注34.3px → 34.3/16 ≈ 2.15rem；随根字号自适应缩放 -->
+            <div class="meta bg-[#e1e1e1]  rounded">2025 年 11 月 10 日 星期 1</div>
+            <!-- 期号字号：标注99.6px → 99.6/16 ≈ 6.23rem；保持行高为1避免额外空间 -->
+            <div class="badge pr-[5rem] pt-[1.4rem] rounded">第1期</div>
+          </div>
+        </div>
+
+        <div class="headline-overlay" data-max-chars="26">
+          性能较前代提升逾四倍，谷歌最强 AI 芯 Iron一二三四五路
+        </div>
+        <div class="mt-[19.5rem] text-[#101011] leading-[1.5] list-block">
+          <ul class="space-y-[1rem]">
+            <li class="flex items-start gap-[1rem]"><span class="dot">●</span> “90后” 字节豆包PC端负责人齐俊元离职，曾任阿里云盘负责人</li>
+            <li class="flex items-start gap-[1rem]"><span class="dot">●</span> 谷歌揭秘 AI 生图模型为何叫 Nano Banana：最初仅用于古位，爆火后“转正”</li>
+            <li class="flex items-start gap-[1rem]"><span class="dot">●</span> 每年10亿美元，苹果请来 Gemini 外援，Siri 体验要刷新了？</li>
+            <li class="flex items-start gap-[1rem]"><span class="dot">●</span> 摩根士丹利看好苹果机器人业务：Apple 智能铺路，征战下一个万亿美元级赛道</li>
+            <li class="flex items-start gap-[1rem]"><span class="dot">●</span> 万维网之父蒂姆·伯纳斯-李：当前互联网广告模式或将被 AI 推毁</li>
+            <li class="flex items-start gap-[1rem]"><span class="dot">●</span> 国产 AI 视觉模型“橘洲”V1.5 发布：首个基于国产算力的全生态端侧大模型落地长沙长沙......</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
