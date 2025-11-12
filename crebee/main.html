@@ -25,14 +25,18 @@
 
       .outer {
         box-sizing: border-box;
-        background-image: url("main.jpeg");
+        background-image: url("https://www.zhainanshijie.com/%E7%A8%BF%E5%AE%9A%E8%AE%BE1.jpg");
         background-size: cover;
-        /* background-position: center; */
         background-repeat: no-repeat;
         aspect-ratio: 3/4;
         padding: 24% 6% 24%;
         font-size: 3rem;
         position: relative;
+      }
+      /* 需要用下滑波浪线的 使用<w>内容</w> */
+      w {
+        text-decoration: #e36330 wavy underline;
+        text-underline-offset: 0.2em;
       }
     </style>
   </head>
@@ -40,17 +44,19 @@
     <div class="outer">
       <div class="w-full h-full flex flex-col items-center justify-between">
         <div class="text-[5.5rem] text-center font-[700]">
-          一二三四五六七八九十
+          一二三四五六
+          <w>七八九十</w>
         </div>
         <div class="text-[5rem] text-center font-[700] text-[#E36330]">
-          一二三四五六七八一二三四五六七八
+          一二三四五六七八<w>一二三四五六七八</w>
         </div>
         <div
           class="w-fit px-[2rem] py-[1.5rem] bg-[#FE6228] rounded-full text-[3rem] text-white">
           不想加薪的运营，谨慎！
         </div>
         <div class="text-[2.4rem] indent-[2em] px-[8rem] text-center">
-          某品牌搭建小红书矩阵，多账号协同发力，曝光量提升 300%，粉丝量增长
+          某品牌搭建小红书矩阵，多账号协同发力，曝光量提升
+          <w>300%</w>，粉丝量增长
           通过精准定位、差异化内容，形成强大传播力。掌握矩阵运营方法论，让品牌流量飙升！
         </div>
       </div>
